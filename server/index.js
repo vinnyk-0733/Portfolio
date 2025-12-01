@@ -163,11 +163,18 @@ app.post('/api/visitors', async (req, res) => {
 });
 
 // Upload Image
-app.post('/api/upload', upload.single('image'), (req, res) => {
-    if (!req.file) {
-        return res.status(400).json({ error: 'No file uploaded' });
-    }
-    res.json({ url: req.file.path });
+// Upload Image
+app.post('/api/upload', (req, res) => {
+    upload.single('image')(req, res, (err) => {
+        if (err) {
+            console.error('Image Upload Error:', err);
+            return res.status(500).json({ error: 'Image upload failed', details: err.message });
+        }
+        if (!req.file) {
+            return res.status(400).json({ error: 'No file uploaded' });
+        }
+        res.json({ url: req.file.path });
+    });
 });
 
 // ----- Serve Vite React build -----
