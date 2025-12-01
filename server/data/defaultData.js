@@ -1,5 +1,5 @@
 const defaultPortfolioData = {
-    password: "vinayakumar073",
+    password: "cseignore",
     studentDetails: {
         name: "Vinaya Kumar",
         location: "Odisha, India",
