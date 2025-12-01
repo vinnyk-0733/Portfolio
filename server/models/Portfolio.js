@@ -1,7 +1,6 @@
 import mongoose from 'mongoose';
 
 const PortfolioSchema = new mongoose.Schema({
-    password: { type: String, default: 'vinayakumar073' },
     studentDetails: {
         name: String,
         location: String,

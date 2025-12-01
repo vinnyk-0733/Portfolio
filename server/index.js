@@ -21,6 +21,13 @@ if (!MONGO_URI) {
     process.exit(1);
 }
 
+const EDITOR_CODE = process.env.EDITOR_CODE;
+
+if (!EDITOR_CODE) {
+    console.error('EDITOR_CODE is not defined in environment variables');
+    process.exit(1);
+}
+
 app.use(cors());
 app.use(express.json());
 
@@ -65,15 +72,9 @@ app.get('/api/portfolio', async (req, res) => {
 app.post('/api/verify-password', async (req, res) => {
     const { password } = req.body;
     try {
-        const portfolio = await Portfolio.findOne();
-        if (!portfolio) {
-            return res
-                .status(404)
-                .json({ success: false, error: 'Portfolio not found' });
-        }
+        console.log(`Verifying password. Received: "${password}"`);
 
-        console.log(`Verifying password. Received: "${password}", Stored: "${portfolio.password}"`);
-        if (portfolio.password === password) {
+        if (password === EDITOR_CODE) {
             res.json({ success: true });
         } else {
             console.log('Password mismatch');
@@ -84,45 +85,20 @@ app.post('/api/verify-password', async (req, res) => {
     }
 });
 
-// Change Password
-app.post('/api/portfolio/change-password', async (req, res) => {
-    const { oldPassword, newPassword } = req.body;
-    try {
-        const portfolio = await Portfolio.findOne();
-        if (!portfolio) {
-            return res
-                .status(404)
-                .json({ success: false, error: 'Portfolio not found' });
-        }
-
-        if (portfolio.password !== oldPassword) {
-            return res
-                .status(401)
-                .json({ success: false, error: 'Invalid old password' });
-        }
-
-        portfolio.password = newPassword;
-        await portfolio.save();
-        res.json({ success: true });
-    } catch (err) {
-        res.status(500).json({ success: false, error: err.message });
-    }
-});
-
 // Update Portfolio Data
 app.post('/api/portfolio/update', async (req, res) => {
     const { password, updates } = req.body;
 
     try {
+        if (password !== EDITOR_CODE) {
+            return res.status(401).json({ success: false, error: 'Unauthorized' });
+        }
+
         const portfolio = await Portfolio.findOne();
         if (!portfolio) {
             return res
                 .status(404)
                 .json({ success: false, error: 'Portfolio not found' });
-        }
-
-        if (portfolio.password !== password) {
-            return res.status(401).json({ success: false, error: 'Unauthorized' });
         }
 
         Object.keys(updates).forEach((key) => {
