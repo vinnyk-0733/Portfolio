@@ -158,7 +158,7 @@ export const PortfolioProvider = ({ children }) => {
   // Fetch portfolio data from database
   const fetchPortfolioData = async () => {
     try {
-      const response = await fetch("http://localhost:5001/api/portfolio", { cache: "no-store" });
+      const response = await fetch("/api/portfolio", { cache: "no-store" });
       if (!response.ok) {
         throw new Error("Failed to fetch portfolio data");
       }
@@ -188,7 +188,7 @@ export const PortfolioProvider = ({ children }) => {
 
   const fetchVisitors = async () => {
     try {
-      const response = await fetch("http://localhost:5001/api/visitors", { cache: "no-store" });
+      const response = await fetch("/api/visitors", { cache: "no-store" });
       if (!response.ok) {
         throw new Error("Failed to fetch visitors");
       }
@@ -236,7 +236,7 @@ export const PortfolioProvider = ({ children }) => {
       if (newData.internships !== undefined)
         updates.internships = newData.internships;
 
-      const response = await fetch("http://localhost:5001/api/portfolio/update", {
+      const response = await fetch("/api/portfolio/update", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -268,7 +268,7 @@ export const PortfolioProvider = ({ children }) => {
 
   const addVisitor = async (email) => {
     try {
-      const response = await fetch("http://localhost:5001/api/visitors", {
+      const response = await fetch("/api/visitors", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -307,7 +307,7 @@ export const PortfolioProvider = ({ children }) => {
     try {
 
 
-      const response = await fetch("http://localhost:5001/api/verify-password", {
+      const response = await fetch("/api/verify-password", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -330,7 +330,7 @@ export const PortfolioProvider = ({ children }) => {
 
   const changePassword = async (oldPassword, newPassword) => {
     try {
-      const response = await fetch("http://localhost:5001/api/portfolio/change-password", {
+      const response = await fetch("/api/portfolio/change-password", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
