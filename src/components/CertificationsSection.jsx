@@ -48,7 +48,7 @@ const CertificationsSection = () => {
       formData.append('image', file);
 
       try {
-        const response = await fetch('http://localhost:5001/api/upload', {
+        const response = await fetch('/api/upload', {
           method: 'POST',
           body: formData,
         });
