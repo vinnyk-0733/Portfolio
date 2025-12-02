@@ -197,16 +197,16 @@ const CertificationsSection = () => {
   );
 
   return (
-    <section id="certifications" className="py-20 relative overflow-hidden">
+    <section id="certifications" className="py-16 md:py-20 relative overflow-hidden">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-8 md:mb-12"
         >
-          <h2 className="text-4xl font-bold mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
             <span className="text-gradient">Certifications</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">

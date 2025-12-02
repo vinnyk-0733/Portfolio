@@ -290,6 +290,9 @@ All colors MUST be HSL.
   }
 }
 
-html {
+html,
+body {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  width: 100%;
 }

@@ -66,7 +66,7 @@ const SkillsSection = () => {
   };
 
   return (
-    <section id="skills" className="py-20 relative">
+    <section id="skills" className="py-16 md:py-20 relative">
       <div className="container mx-auto px-4">
 
         {/* Header */}
@@ -75,9 +75,9 @@ const SkillsSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-8 md:mb-12"
         >
-          <h2 className="text-4xl font-bold mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Skills & <span className="text-gradient">Interests</span>
           </h2>
 

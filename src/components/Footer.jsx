@@ -27,9 +27,9 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="py-16 relative">
+    <footer className="py-12 md:py-16 relative">
       <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-2 gap-12 items-center mb-12">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center mb-8 md:mb-12">
 
           {/* Left Side - Info */}
           <motion.div
@@ -37,17 +37,18 @@ const Footer = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+            className="text-center md:text-left"
           >
-            <h2 className="text-3xl font-bold mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">
               Let's <span className="text-gradient">Connect</span>
             </h2>
 
-            <p className="text-muted-foreground mb-6">
+            <p className="text-muted-foreground mb-6 text-sm md:text-base">
               I'm always open to discussing new opportunities, collaborations,
               or just having a chat about data science and technology.
             </p>
 
-            <div className="flex gap-4">
+            <div className="flex gap-4 justify-center md:justify-start">
               {socialLinks.map((social) => (
                 <a
                   key={social.label}
@@ -77,8 +78,8 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="border-t border-border/50 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-muted-foreground">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
+            <p className="text-xs md:text-sm text-muted-foreground">
               © {currentYear} {portfolioData.studentDetails.name}. All rights reserved.
             </p>
           </div>

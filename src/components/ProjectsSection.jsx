@@ -92,14 +92,14 @@ const ProjectsSection = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: index * 0.1 }}
-        className="section-card hover-lift group relative"
+        className="section-card hover-lift group relative h-full flex flex-col"
       >
         {isEditing && (
           <Button
             variant="ghost"
             size="sm"
             onClick={() => removeProject(type, project.id)}
-            className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity text-destructive hover:text-destructive"
+            className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity text-destructive hover:text-destructive z-10"
           >
             <Trash2 className="h-4 w-4" />
           </Button>
@@ -225,7 +225,7 @@ const ProjectsSection = () => {
   };
 
   return (
-    <section id="projects" className="py-20 relative">
+    <section id="projects" className="py-16 md:py-20 relative">
       <div className="container mx-auto px-4">
 
         {/* Header */}
@@ -234,13 +234,13 @@ const ProjectsSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-8 md:mb-12"
         >
-          <h2 className="text-4xl font-bold mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
             My <span className="text-gradient">Projects</span>
           </h2>
 
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-muted-foreground max-w-2xl mx-auto text-sm md:text-base">
             A showcase of my work including internship projects and personal experiments.
           </p>
 
@@ -281,7 +281,7 @@ const ProjectsSection = () => {
 
           {/* Internship Projects Tab */}
           <TabsContent value="internship">
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {(isEditing ? editInternship : portfolioData.internshipProjects).map(
                 (project, index) => (
                   <ProjectCard
@@ -297,7 +297,7 @@ const ProjectsSection = () => {
 
           {/* Personal Projects Tab */}
           <TabsContent value="personal">
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {(isEditing ? editPersonal : portfolioData.personalProjects).map(
                 (project, index) => (
                   <ProjectCard

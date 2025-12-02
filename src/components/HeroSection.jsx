@@ -62,15 +62,15 @@ const HeroSection = () => {
   const typingSequence = portfolioData.typingTexts.flatMap(text => [text, 2000]);
 
   return (
-    <section id="about" className="min-h-screen pt-24 pb-16 relative overflow-hidden">
-      
+    <section id="about" className="min-h-screen pt-20 md:pt-24 pb-12 md:pb-16 relative overflow-hidden flex items-center w-full max-w-full">
+
       {/* Background */}
       <div className="absolute inset-0 gradient-hero opacity-50" />
 
-      <div className="absolute inset-0">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse-soft" />
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-10 w-32 h-32 md:w-72 md:h-72 bg-primary/10 rounded-full blur-3xl animate-pulse-soft" />
         <div
-          className="absolute bottom-20 right-10 w-96 h-96 bg-chart-2/10 rounded-full blur-3xl animate-pulse-soft"
+          className="absolute bottom-20 right-10 w-48 h-48 md:w-96 md:h-96 bg-chart-2/10 rounded-full blur-3xl animate-pulse-soft"
           style={{ animationDelay: '1s' }}
         />
       </div>
@@ -83,7 +83,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-1"
+            className="lg:col-span-1 order-2 lg:order-1"
           >
             <div className="glass rounded-2xl p-6 sticky top-24">
 
@@ -99,11 +99,11 @@ const HeroSection = () => {
               )}
 
               {/* Profile Picture */}
-              <div className="relative w-32 h-32 mx-auto mb-6">
+              <div className="relative w-28 h-28 md:w-32 md:h-32 mx-auto mb-6">
                 <div className="w-full h-full rounded-full overflow-hidden bg-primary/20 
                     flex items-center justify-center border-4 border-primary/30 
                     hover:scale-105 transition-transform duration-300">
-                  
+
                   {(isEditing ? editData.profileImage : portfolioData.studentDetails.profileImage) ? (
                     <img
                       src={isEditing ? editData.profileImage : portfolioData.studentDetails.profileImage}
@@ -134,12 +134,12 @@ const HeroSection = () => {
                     className="text-center text-xl font-bold mb-2"
                   />
                 ) : (
-                  <h1 className="text-2xl font-bold mb-2">
+                  <h1 className="text-2xl md:text-3xl font-bold mb-2">
                     {portfolioData.studentDetails.name}
                   </h1>
                 )}
 
-                <div className="text-primary font-medium h-6">
+                <div className="text-primary font-medium h-6 text-sm md:text-base">
                   <TypeAnimation
                     sequence={typingSequence}
                     wrapper="span"
@@ -154,7 +154,7 @@ const HeroSection = () => {
 
                 {/* Location */}
                 <div className="flex items-center gap-3 text-sm">
-                  <MapPin className="h-4 w-4 text-primary" />
+                  <MapPin className="h-4 w-4 text-primary shrink-0" />
                   {isEditing ? (
                     <Input
                       value={editData.location}
@@ -162,13 +162,13 @@ const HeroSection = () => {
                       className="h-8 text-sm"
                     />
                   ) : (
-                    <span>{portfolioData.studentDetails.location}</span>
+                    <span className="truncate">{portfolioData.studentDetails.location}</span>
                   )}
                 </div>
 
                 {/* Email */}
                 <div className="flex items-center gap-3 text-sm">
-                  <Mail className="h-4 w-4 text-primary" />
+                  <Mail className="h-4 w-4 text-primary shrink-0" />
                   {isEditing ? (
                     <Input
                       value={editData.email}
@@ -178,7 +178,7 @@ const HeroSection = () => {
                   ) : (
                     <a
                       href={`mailto:${portfolioData.studentDetails.email}`}
-                      className="hover:text-primary transition-colors"
+                      className="hover:text-primary transition-colors truncate"
                     >
                       {portfolioData.studentDetails.email}
                     </a>
@@ -187,7 +187,7 @@ const HeroSection = () => {
 
                 {/* Phone */}
                 <div className="flex items-center gap-3 text-sm">
-                  <Phone className="h-4 w-4 text-primary" />
+                  <Phone className="h-4 w-4 text-primary shrink-0" />
                   {isEditing ? (
                     <Input
                       value={editData.phone}
@@ -197,7 +197,7 @@ const HeroSection = () => {
                   ) : (
                     <a
                       href={`tel:${portfolioData.studentDetails.phone}`}
-                      className="hover:text-primary transition-colors"
+                      className="hover:text-primary transition-colors truncate"
                     >
                       {portfolioData.studentDetails.phone}
                     </a>
@@ -206,7 +206,7 @@ const HeroSection = () => {
 
                 {/* GitHub */}
                 <div className="flex items-center gap-3 text-sm">
-                  <Github className="h-4 w-4 text-primary" />
+                  <Github className="h-4 w-4 text-primary shrink-0" />
                   {isEditing ? (
                     <Input
                       value={editData.github}
@@ -266,11 +266,11 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="lg:col-span-2"
+            className="lg:col-span-2 order-1 lg:order-2"
           >
-            <div className="glass rounded-2xl p-8">
+            <div className="glass rounded-2xl p-6 md:p-8 mb-8">
               <div className="flex items-center justify-between mb-6">
-                <h2 className="text-3xl font-bold">
+                <h2 className="text-2xl md:text-3xl font-bold">
                   About <span className="text-gradient">Me</span>
                 </h2>
 
@@ -307,7 +307,7 @@ const HeroSection = () => {
                   </div>
                 </div>
               ) : (
-                <p className="text-lg leading-relaxed text-foreground/90">
+                <p className="text-base md:text-lg leading-relaxed text-foreground/90">
                   {portfolioData.summary}
                 </p>
               )}
@@ -318,7 +318,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6"
+              className="grid grid-cols-2 md:grid-cols-4 gap-4"
             >
               {[
 
@@ -329,16 +329,16 @@ const HeroSection = () => {
 
               ].map((stat) => (
                 <div key={stat.label} className="glass-subtle rounded-xl p-4 text-center hover-lift">
-                  <div className="text-3xl font-bold text-primary">{stat.value}</div>
-                  <div className="text-sm text-muted-foreground">{stat.label}</div>
+                  <div className="text-2xl md:text-3xl font-bold text-primary">{stat.value}</div>
+                  <div className="text-xs md:text-sm text-muted-foreground">{stat.label}</div>
                 </div>
               ))}
             </motion.div>
           </motion.div>
 
         </div>
-      </div>
-    </section>
+      </div >
+    </section >
   );
 };
 
