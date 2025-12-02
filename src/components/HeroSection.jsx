@@ -68,9 +68,9 @@ const HeroSection = () => {
       <div className="absolute inset-0 gradient-hero opacity-50" />
 
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-32 h-32 md:w-72 md:h-72 bg-primary/10 rounded-full blur-3xl animate-pulse-soft" />
+        <div className="absolute top-20 left-10 w-32 h-32 md:w-72 md:h-72 bg-primary/10 rounded-full blur-2xl md:blur-3xl md:animate-pulse-soft" />
         <div
-          className="absolute bottom-20 right-10 w-48 h-48 md:w-96 md:h-96 bg-chart-2/10 rounded-full blur-3xl animate-pulse-soft"
+          className="absolute bottom-20 right-10 w-48 h-48 md:w-96 md:h-96 bg-chart-2/10 rounded-full blur-2xl md:blur-3xl md:animate-pulse-soft"
           style={{ animationDelay: '1s' }}
         />
       </div>

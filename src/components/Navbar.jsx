@@ -131,7 +131,7 @@ const Navbar = () => {
 
           {/* Mobile Nav Menu */}
           {isMobileMenuOpen && (
-            <div className="md:hidden absolute top-16 left-0 right-0 bg-background/95 backdrop-blur-xl border-b border-border/50 animate-slide-up shadow-2xl z-40">
+            <div className="md:hidden absolute top-16 left-0 right-0 bg-background/95 backdrop-blur-md border-b border-border/50 animate-slide-up shadow-2xl z-40">
               <div className="flex flex-col p-4 space-y-2">
                 {navLinks.map((link) => (
                   <a
