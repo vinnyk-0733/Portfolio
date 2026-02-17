@@ -141,6 +141,7 @@ const HeroSection = () => {
 
                 <div className="text-primary font-medium h-6 text-sm md:text-base">
                   <TypeAnimation
+                    key={portfolioData.typingTexts.join('|')}
                     sequence={typingSequence}
                     wrapper="span"
                     speed={50}
