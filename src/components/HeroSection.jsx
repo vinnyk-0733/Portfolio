@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import { MapPin, Mail, Phone, Github, Award, FileText, Edit2, Save, X } from 'lucide-react';
@@ -17,6 +17,15 @@ const HeroSection = () => {
     typingTexts: portfolioData.typingTexts,
     summary: portfolioData.summary
   });
+
+  // Sync editData when portfolioData changes (e.g., when loaded from database)
+  useEffect(() => {
+    setEditData({
+      ...portfolioData.studentDetails,
+      typingTexts: portfolioData.typingTexts,
+      summary: portfolioData.summary
+    });
+  }, [portfolioData]);
 
   const handleSave = () => {
     updatePortfolioData({
